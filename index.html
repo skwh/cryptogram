@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cryptogram</title>
+    <link href="styles.css" rel="stylesheet" />
+    <script type="text/javascript" src="script.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+    <header>Cryptogram</header>
+    <main>
+      <blockquote>
+      </blockquote>
+      <cite></cite>
+    </main>
+    <section>
+      <button name="Hint" onclick="game.hint()"><i class="material-icons">help_outline</i></button>
+      <button name="Reset" onclick="game.resetQuote()"><i class="material-icons">replay</i></button>
+      <button name="Next" onclick="game.nextQuote()"><i class="material-icons">skip_next</i></button>
+      <button name="Help" onclick="game.toggleInstructions()"><i class="material-icons">description</i></button>
+    </section>
+    <aside class="hidden">
+      <h1>Cryptogram - Instructions</h1>
+      <p>In this game, a random quote is presented to the player. The quote is encoded with a Ceasar Cipher: each letter in the alphabet has been exchanged for another to create a ciphertext. The player must pick the right letters to decode the original quote. Once the quote has been successfully decoded, the player wins, and is presented with another quote.</p>
+      <h3>Choosing Letters</h3>
+      <p>To guess a letter, click on the letter in question and use your keyboard to type the letter which you guess. The game will insert your guess into every applicable letter in the ciphertext.</p>
+      <p>If you can't figure out what a letter is, you can use the <b>hint</b> feature. Click on a letter which you want the answer to, and then press the <b>hint</b> button (the question mark symbol).</p>
+      <p>You can also reset your guesses by pressing the reset button.</p>
+      <p>Because of patterns of words and letters in the English language, it's possible to make informed guesses about what an encrypted letter's counterpart might be. If two of the same letter occur in a row, there are only a certain number of letters which could be the counterpart: <code>s</code>, <code>l</code>, <code>g</code>, <code>p</code>, and <code>n</code>. <code>U</code> is also a possibility, but only if the word is <i>vacuum</i>. It's also best to guess short words first, because of the low number of possiblities. <i>And</i>, <i>the</i>, <i>it / is</i> are all very common words which will almost always occur in the quote.</p>
+      <h3>Credits</h3>
+      <p>This version of this game is based heavily on the Android app of the same name. Quotes are from the API at <a href="https://talaikis.com/random_quotes_api/">https://talaikis.com/random_quotes_api/</a>. Otherwise created by Evan Derby.</p>
+      <button name="Close" onclick="game.toggleInstructions()">Close</button>
+    </aside>
+    <shadow class="hidden"></shadow>
+  </body>
+</html>
