@@ -1,4 +1,121 @@
 /* script.js */
+// Quotes from http://goodreads.com/quotes
+const QUOTES = [
+  {
+    quote: 'The way to get things done is not to mind who gets the credit for doing them.',
+    author: 'Benjamit Jowett'
+  },
+  {
+    quote: 'It is better to rust out than wear out.',
+    author: 'Edwin Markham'
+  },
+  {
+    quote: 'There must be quite a few things that a hot bath won\'t cure, but I don\'t know many of them.',
+    author: 'Sylvia Plath'
+  },
+  {
+    quote: 'I\'m selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can\'t handle me at my worst, then you sure as hell don\'t deserve me at my best.',
+    author: 'Marilyn Monroe'
+  },
+  {
+    quote: 'Two things are infinite: the universe and human stupidity; and I\'m not sure about the universe.',
+    author: 'Albert Einstein',
+  },
+  {
+    quote: 'Be who you are and say what you feel, because those who mind don\'t matter, and those who matter don\'t mind.',
+    author: 'Bernard M. Baruch'
+  },
+  {
+    quote: 'You know you\'re in love when you can\'t fall asleep because reality is finally better than your dreams.',
+    author: 'Dr. Seuss'
+  },
+  {
+    quote: 'In three words I can sum up everything I\'ve learned about life: it goes on.',
+    author: 'Robert Frost'
+  },
+  {
+    quote: 'I\'ve learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel.',
+    author: 'Maya Angelou'
+  },
+  {
+    quote: 'Darkness cannot drive out darkness: only light can do that. Hate cannot drive out hate: only love can do that.',
+    author: 'Martin Luther King Jr.',
+  },
+  {
+    quote: 'To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.',
+    author: 'Ralph Waldo Emerson'
+  },
+  {
+    quote: 'I am so clever that sometimes I don\'t understand a single word of what I am saying.',
+    author: 'Oscar Wilde'
+  },
+  {
+    quote: 'Live as if you were to die tomorrow. Learn as if you were to live forever.',
+    author: 'Mahatma Gandhi'
+  },
+  {
+    quote: 'Twenty years from now you will be more disappointed by the things that you didn\'t do than by the ones you did do. So throw off the bowlines. Sail away from the safe harbor. Catch the trade winds in your sails. Explore. Dream. Discover.',
+    author: 'H. Jackson Brown Jr.'
+  },
+  {
+    quote: 'It is better to be hated for what you are than to be loved for what you are not.',
+    author: 'Andre Gide'
+  },
+  {
+    quote: 'All that is gold does not glitter, Not all those who wander are lost; The old that is strong does not wither, Deep roots are not reached by the frost.',
+    author: 'J.R.R. Tolkien'
+  },
+  {
+    quote: 'The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.',
+    author: 'Jane Austen'
+  },
+  {
+    quote: 'It does not do to dwell on dreams and forget to live.',
+    author: 'J.K. Rowling'
+  },
+  {
+    quote: 'As he read, I fell in love with the way you fall asleep: slowly, and then all at once.',
+    author: 'John Green'
+  },
+  {
+    quote: 'Good friends, good books, and a sleepy conscience: this is the ideal life.',
+    author: 'Mark Twain'
+  },
+  {
+    quote: 'It is better to remain silent at the risk of being thought a fool, than to talk and remove all doubt of it.',
+    author: 'Maurice Switzer'
+  },
+  {
+    quote: 'The fool doth think he is wise, but the wise man knows himself to be a fool.',
+    author: 'William Shakespeare'
+  },
+  {
+    quote: 'We are all in the gutter, but some of us are looking at the stars.',
+    author: 'Oscar Wilde'
+  },
+  {
+    quote: 'Fairy tales are more than true: not because they tell us that dragons exist, but because they tell us that dragons can be beaten.',
+    author: 'Neil Gaiman'
+  },
+  {
+    quote: 'I have not failed. I\'ve just found 10,000 ways that won\'t work.',
+    author: 'Thomas Edison'
+  },
+  {
+    quote: 'It is not a lack of love, but a lack of friendship that makes unhappy marriages.',
+    author: 'Friedrich Nietzsche'
+  },
+  {
+    quote: 'If you don\'t stand for something you will fall for anything.',
+    author: 'Gordon A. Eadie'
+  },
+  {
+    quote: 'Outside of a dog, a book is man\'s best friend. Inside of a dog it\'s too dark to read.',
+    author: 'Groucho Marx'
+  }
+];
+
+
 Array.prototype.contains = function(obj) {
   for (var i=0;i<this.length;i++) {
     if (this[i] === obj)
@@ -160,7 +277,7 @@ let game = {
   },
   makeGivens: function() {
     this.givenChars = [];
-    let numGivens = Math.ceil(Math.random() * 10);
+    let numGivens = Math.floor(Math.random() * 7) + 1;
     for (let i=0;i<numGivens;i++) {
       let randChar = String.fromCharCode(Math.ceil(Math.random() * 26)+96);
       if (!this.givenChars.contains(randChar)) {
@@ -334,9 +451,14 @@ let interface = {
 }
 
 let network = {
-  baseUrl: "https://talaikis.com/api/quotes/random/",
+  /* This api is no longer active. Modified to use the "quotes" array at the top
+   * of this file. */
+  //baseUrl: "https://talaikis.com/api/quotes/random/",
   getQuote: function() {
-    return fetch(this.baseUrl).then(response => response.json());
+    //return fetch(this.baseUrl).then(response => response.json());
+    return new Promise(resolve => {
+      resolve(QUOTES[Math.floor(Math.random() * QUOTES.length)]);
+    });
   },
 }
 
